@@ -11,6 +11,7 @@
 @property (nonatomic, strong) dispatch_source_t timer;
 @property (nonatomic, strong) dispatch_queue_t timerSerialQueue;
 @property (nonatomic, assign) NSTimeInterval timeInterval;
+@property (nonatomic, strong) dispatch_semaphore_t lock;
 @property (nonatomic, assign) BOOL isRepeats;
 @property (nonatomic, assign) BOOL isTarget;
 @property (nonatomic, weak)   id target;
@@ -62,6 +63,7 @@
     if (self = [super init]) {
         self.timeInterval = timeInterval;
         self.isRepeats = isRepeats;
+        self.lock = dispatch_semaphore_create(1);
         NSString *timerSerialQueueName = [NSString stringWithFormat:@"com.qiuxuewei.xwtimer.%p",self];
         self.timerSerialQueue = dispatch_queue_create([timerSerialQueueName cStringUsingEncoding:NSASCIIStringEncoding], DISPATCH_QUEUE_SERIAL);
         dispatch_set_target_queue(self.timerSerialQueue, queue);
@@ -95,26 +97,32 @@
 - (void)fire
 {
     if (self.isInvalidated == YES || self.isFired == YES) return;
+    dispatch_semaphore_wait(self.lock, DISPATCH_TIME_FOREVER);
     self.isPaused = NO;
     self.isFired = YES;
     [self createTimer];
     dispatch_source_set_timer(self.timer, DISPATCH_TIME_NOW, self.timeInterval * NSEC_PER_SEC, 0 * NSEC_PER_SEC);
+    dispatch_semaphore_signal(self.lock);
 }
 
 - (void)pause
 {
     if (self.isInvalidated == YES || self.isPaused == YES || self.isFired == NO) return;
+    dispatch_semaphore_wait(self.lock, DISPATCH_TIME_FOREVER);
     self.isPaused = YES;
     self.isFired = NO;
     [self discardTimer];
+    dispatch_semaphore_signal(self.lock);
 }
 
 - (void)invalidate
 {
     if (self.isInvalidated == YES) return;
+    dispatch_semaphore_wait(self.lock, DISPATCH_TIME_FOREVER);
     self.isInvalidated = YES;
     self.isFired = NO;
     [self discardTimer];
+    dispatch_semaphore_signal(self.lock);
 }
 
 - (void)timerMethod
