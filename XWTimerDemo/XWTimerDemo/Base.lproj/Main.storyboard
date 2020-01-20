@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EK3-va-m7v">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="EK3-va-m7v">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -12,6 +11,10 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="M76-WK-DBX"/>
+                        <viewControllerLayoutGuide type="bottom" id="T0h-QF-6yE"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -41,7 +44,6 @@
                             <constraint firstItem="xCb-GV-mjg" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="eVK-gp-8sj"/>
                             <constraint firstItem="xCb-GV-mjg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ewi-1R-L6a"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="XWTimer Demo" id="ada-p8-JrH"/>
                 </viewController>
@@ -53,6 +55,10 @@
         <scene sceneID="rph-A7-NP4">
             <objects>
                 <viewController id="bJc-lT-kGE" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kla-xi-OGN"/>
+                        <viewControllerLayoutGuide type="bottom" id="q5N-Pe-Fap"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8cc-hm-iRX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -142,11 +148,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Qbr-xk-Cvs" firstAttribute="width" secondItem="5Nq-ai-dLW" secondAttribute="width" id="7Pf-aE-0vX"/>
-                            <constraint firstItem="t5C-kO-d7s" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="0GK-Z6-KIx" secondAttribute="trailing" symbolic="YES" id="7fd-Is-WkF"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="0GK-Z6-KIx" secondAttribute="trailing" symbolic="YES" id="7fd-Is-WkF"/>
                             <constraint firstItem="Qbr-xk-Cvs" firstAttribute="centerX" secondItem="5Nq-ai-dLW" secondAttribute="centerX" id="IwJ-kf-bd0"/>
                             <constraint firstItem="Qbr-xk-Cvs" firstAttribute="centerX" secondItem="8cc-hm-iRX" secondAttribute="centerX" id="Nht-1w-gtv"/>
                             <constraint firstItem="s5o-IZ-Nei" firstAttribute="top" secondItem="Qbr-xk-Cvs" secondAttribute="bottom" constant="32.5" id="R9P-2n-8le"/>
-                            <constraint firstItem="6ut-ek-gNd" firstAttribute="leading" secondItem="t5C-kO-d7s" secondAttribute="leading" constant="106" id="S03-BA-tQs"/>
+                            <constraint firstItem="6ut-ek-gNd" firstAttribute="leading" secondItem="8cc-hm-iRX" secondAttribute="leading" constant="106" id="S03-BA-tQs"/>
                             <constraint firstItem="9F6-zN-Cqd" firstAttribute="centerY" secondItem="6ut-ek-gNd" secondAttribute="centerY" id="T0P-wU-pku"/>
                             <constraint firstItem="0GK-Z6-KIx" firstAttribute="centerY" secondItem="6ut-ek-gNd" secondAttribute="centerY" id="TpA-0o-7Y7"/>
                             <constraint firstItem="9F6-zN-Cqd" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6ut-ek-gNd" secondAttribute="trailing" constant="8" symbolic="YES" id="UQY-sp-ahc"/>
@@ -162,7 +168,6 @@
                             <constraint firstItem="9F6-zN-Cqd" firstAttribute="top" secondItem="s5o-IZ-Nei" secondAttribute="bottom" constant="30" id="rGo-rh-2aw"/>
                             <constraint firstItem="0GK-Z6-KIx" firstAttribute="leading" secondItem="9F6-zN-Cqd" secondAttribute="trailing" constant="33.5" id="x84-A0-kcy"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="t5C-kO-d7s"/>
                     </view>
                     <navigationItem key="navigationItem" title="Demo" id="eiu-ia-ebG"/>
                     <connections>

@@ -63,7 +63,8 @@
     if (self = [super init]) {
         self.timeInterval = timeInterval;
         self.isRepeats = isRepeats;
-        self.lock = dispatch_semaphore_create(1);
+        self.lock = dispatch_semaphore_create(0);
+        dispatch_semaphore_signal(self.lock);
         NSString *timerSerialQueueName = [NSString stringWithFormat:@"com.qiuxuewei.xwtimer.%p",self];
         self.timerSerialQueue = dispatch_queue_create([timerSerialQueueName cStringUsingEncoding:NSASCIIStringEncoding], DISPATCH_QUEUE_SERIAL);
         dispatch_set_target_queue(self.timerSerialQueue, queue);
