@@ -25,32 +25,32 @@
 @implementation XWTimer
 
 #pragma mark - Public
-+ (instancetype)timerWithTimerInterval:(NSTimeInterval)timeInterval isRepeats:(BOOL)isRepeats block:(nonnull void(^)(XWTimer *timer))block
++ (instancetype)timerWithTimeInterval:(NSTimeInterval)timeInterval repeats:(BOOL)isRepeats block:(nonnull void(^)(XWTimer *timer))block
 {
-    return [XWTimer timerWithTimerInterval:timeInterval isRepeats:isRepeats queue:dispatch_get_main_queue() block:block];
+    return [XWTimer timerWithTimeInterval:timeInterval repeats:isRepeats queue:dispatch_get_main_queue() block:block];
 }
 
-+ (instancetype)timerWithTimerInterval:(NSTimeInterval)timeInterval isRepeats:(BOOL)isRepeats queue:(dispatch_queue_t)queue block:(nonnull void(^)(XWTimer *timer))block
++ (instancetype)timerWithTimeInterval:(NSTimeInterval)timeInterval repeats:(BOOL)isRepeats queue:(dispatch_queue_t)queue block:(nonnull void(^)(XWTimer *timer))block
 {
     NSParameterAssert(block);
     NSParameterAssert(queue);
-    XWTimer *timer = [[XWTimer alloc] initWithTimerInterval:timeInterval isRepeats:isRepeats queue:queue];
+    XWTimer *timer = [[XWTimer alloc] initWithTimerInterval:timeInterval repeats:isRepeats queue:queue];
     timer.block = block;
     timer.isTarget = NO;
     return timer;
 }
 
-+ (instancetype)timerWithTimerInterval:(NSTimeInterval)timeInterval target:(id)target selector:(SEL)selector isRepeats:(BOOL)isRepeats
++ (instancetype)timerWithTimeInterval:(NSTimeInterval)timeInterval target:(id)target selector:(SEL)selector repeats:(BOOL)isRepeats
 {
-    return [XWTimer timerWithTimerInterval:timeInterval target:target selector:selector isRepeats:isRepeats queue:dispatch_get_main_queue()];
+    return [XWTimer timerWithTimeInterval:timeInterval target:target selector:selector repeats:isRepeats queue:dispatch_get_main_queue()];
 }
 
-+ (instancetype)timerWithTimerInterval:(NSTimeInterval)timeInterval target:(id)target selector:(SEL)selector isRepeats:(BOOL)isRepeats queue:(dispatch_queue_t)queue
++ (instancetype)timerWithTimeInterval:(NSTimeInterval)timeInterval target:(id)target selector:(SEL)selector repeats:(BOOL)isRepeats queue:(dispatch_queue_t)queue
 {
     NSParameterAssert(target);
     NSParameterAssert(selector);
     NSParameterAssert(queue);
-    XWTimer *timer = [[XWTimer alloc] initWithTimerInterval:timeInterval isRepeats:isRepeats queue:queue];
+    XWTimer *timer = [[XWTimer alloc] initWithTimerInterval:timeInterval repeats:isRepeats queue:queue];
     timer.target = target;
     timer.selector = selector;
     timer.isTarget = YES;
@@ -58,7 +58,7 @@
 }
 
 #pragma mark - Private
-- (instancetype)initWithTimerInterval:(NSTimeInterval)timeInterval isRepeats:(BOOL)isRepeats queue:(dispatch_queue_t)queue
+- (instancetype)initWithTimerInterval:(NSTimeInterval)timeInterval repeats:(BOOL)isRepeats queue:(dispatch_queue_t)queue
 {
     if (self = [super init]) {
         self.timeInterval = timeInterval;

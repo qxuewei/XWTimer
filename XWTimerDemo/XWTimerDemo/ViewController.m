@@ -35,10 +35,10 @@
 - (void)creatTimerOnMainQueue
 {
     if (_isTarget) {
-        self.timerMain = [XWTimer timerWithTimerInterval:1.0 target:self selector:@selector(timerMethodMain) isRepeats:YES];
+        self.timerMain = [XWTimer timerWithTimeInterval:1.0 target:self selector:@selector(timerMethodMain) repeats:YES];
     } else {
         __weak typeof(self) weakSelf = self;
-        self.timerMain = [XWTimer timerWithTimerInterval:1.0 isRepeats:YES block:^(XWTimer * _Nonnull timer) {
+        self.timerMain = [XWTimer timerWithTimeInterval:1.0 repeats:YES block:^(XWTimer * _Nonnull timer) {
             __strong typeof(weakSelf) strongSelf = weakSelf;
             [strongSelf timerMethodMain];
         }];
@@ -49,11 +49,11 @@
 - (void)creatTimerOnGlobalQueue
 {
     if (_isTarget) {
-        self.timerGlobal = [XWTimer timerWithTimerInterval:1.0 target:self selector:@selector(timerMethodGlobal) isRepeats:YES queue:dispatch_get_global_queue(0, 0)];
+        self.timerGlobal = [XWTimer timerWithTimeInterval:1.0 target:self selector:@selector(timerMethodGlobal) repeats:YES queue:dispatch_get_global_queue(0, 0)];
             
     } else {
         __weak typeof(self) weakSelf = self;
-        self.timerGlobal = [XWTimer timerWithTimerInterval:1.0 isRepeats:YES queue:dispatch_get_global_queue(0, 0) block:^(XWTimer * _Nonnull timer) {
+        self.timerGlobal = [XWTimer timerWithTimeInterval:1.0 repeats:YES queue:dispatch_get_global_queue(0, 0) block:^(XWTimer * _Nonnull timer) {
             __strong typeof(weakSelf) strongSelf = weakSelf;
             [strongSelf timerMethodGlobal];
         }];

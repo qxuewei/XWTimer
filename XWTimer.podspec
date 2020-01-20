@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 s.name         = "XWTimer"
-s.version      = "1.0.1"
+s.version      = "1.0.2"
 s.summary      = "GCD Timer"
 s.description  = <<-DESC
 A Simple GCD Timer with Objective-C

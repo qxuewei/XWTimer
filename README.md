@@ -11,7 +11,7 @@ pod 'XWTimer'
 ### How to use?
 #### `target-selector`
 ```objc
-self.timer = [XWTimer timerWithTimerInterval:1.0 target:self selector:@selector(timerMethod) isRepeats:YES];
+self.timer = [XWTimer timerWithTimeInterval:1.0 target:self selector:@selector(timerMethod) repeats:YES];
 
 - (void)timerMethod
 {
@@ -23,7 +23,7 @@ self.timer = [XWTimer timerWithTimerInterval:1.0 target:self selector:@selector(
 
 ```objc
 __weak typeof(self) weakSelf = self;
-self.timer =[XWTimer timerWithTimerInterval:1.0 isRepeats:YES block:^(XWTimer * _Nonnull timer) {
+self.timer =[XWTimer timerWithTimeInterval:1.0 repeats:YES block:^(XWTimer * _Nonnull timer) {
     __strong typeof(weakSelf) strongSelf = weakSelf;
     /// do somethings
 }];
